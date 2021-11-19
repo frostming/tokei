@@ -23,8 +23,13 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Build wheels
+      - name: Build wheels(MacOS, Windows)
+        if: runner.os != 'Linux'
         run: python -m pip wheel . -w dist
+
+      - name: Build wheels(Linux)
+        if: runner.os == 'Linux'
+        run: python -m pip wheel --build-option="-p manylinux2010_x86_64" . -w dist
 
       - name: Test wheel
         run: |
