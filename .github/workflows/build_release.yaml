@@ -28,7 +28,7 @@ jobs:
 
       - name: Test wheel
         run: |
-          python -m pip install tokei -f dist/
+          python -m pip install tokei --no-index -f dist/
           tokei --help
 
       - name: Publish a Python distribution to PyPI
