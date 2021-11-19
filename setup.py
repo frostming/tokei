@@ -56,5 +56,5 @@ setup(
     name="tokei",
     version=VERSION,
     cmdclass={"install_scripts": InstallTokei},
-    has_ext_modules=True,
+    has_ext_modules=lambda: True,
 )
