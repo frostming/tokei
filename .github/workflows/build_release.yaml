@@ -25,11 +25,11 @@ jobs:
 
       - name: Build wheels(MacOS, Windows)
         if: runner.os != 'Linux'
-        run: python -m pip wheel . -w dist
+        run: python setup.py bdist_wheel
 
       - name: Build wheels(Linux)
         if: runner.os == 'Linux'
-        run: python -m pip wheel --build-option="-p manylinux2010_x86_64" . -w dist
+        run: python setup.py bdist_wheel -p manylinux2010_x86_64"
 
       - name: Test wheel
         run: |
